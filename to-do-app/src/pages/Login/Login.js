@@ -1,12 +1,27 @@
 import {Link} from "react-router-dom";
 import {Main} from "../../components";
+import {authService} from "../../services/authService";
 
 function Login() {
+
+    const loginHandler = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const {email, password} = Object.fromEntries(formData);
+
+        authService.login(email, password).then(user => {
+            console.log(user);
+
+        }).catch(err => {
+            console.log(err.message);
+            alert(err.message)
+        });
+    }
 
     return (
         <Main title='Login' >
 
-            <form>
+            <form onSubmit={loginHandler}>
 
                 <label htmlFor="email">Email</label>
                 <input name={'email'}
