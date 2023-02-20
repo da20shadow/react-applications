@@ -1,13 +1,14 @@
 import './Header.css';
+import {NavLink} from "react-router-dom";
 
 function Header () {
 
     return (
         <header className={'py-3'}>
             <nav className={'flex gap-4 justify-center'}>
-                <a className={'nav-link'} href="/">Home</a>
-                <a className={'nav-link'} href="/login">Login</a>
-                <a className={'nav-link'} href="/register">Register</a>
+                <NavLink to={'/'} className={'nav-link'} >Home</NavLink>
+                <NavLink to={'/login'} className={'nav-link'}>Login</NavLink>
+                <NavLink to={'/register'} className={'nav-link'}>Register</NavLink>
             </nav>
         </header>
     );
