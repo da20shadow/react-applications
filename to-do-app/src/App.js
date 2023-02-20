@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './assets/scss/style.css';
 import {Header} from "./components";
 import {Routes, Route} from "react-router-dom";
-import {Home} from "./pages";
+import {Home, Login} from "./pages";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
 
         <Routes>
             <Route path={'/'} element={<Home/>} />
+            <Route path={'/login'} element={<Login/>} />
         </Routes>
     </>
   );
