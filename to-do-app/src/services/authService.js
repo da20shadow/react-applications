@@ -41,8 +41,8 @@ const register = (name, email, password, rePassword) => {
     return post(`${PATH}/register`, {name, email, password, rePassword});
 }
 
-const logout = (token) => {
-    return post(`${PATH}/logout`,'',token);
+const logout = () => {
+    return post(`${PATH}/logout`,'');
 }
 
 export const authService = {

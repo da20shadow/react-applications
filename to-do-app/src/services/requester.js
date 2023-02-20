@@ -1,28 +1,26 @@
 import {ENV} from "../constants";
 
-const request = async (path, data, token, method) => {
+const request = async (path, data, method) => {
     const options = {method, headers: {"Content-type": "Application/JSON"}};
     if (data) {
         options.body = JSON.stringify(data);
     }
-    if (token) {
-        options.headers['Authorization'] = token;
-    }
+
     const response = await fetch(`${ENV.baseUrl}/${path}`, options);
     return responseHandler(response);
 }
 
-export const get = async (path, token) => {
-    return request(path, '', token, 'GET');
+export const get = async (path,) => {
+    return request(path, '', 'GET');
 }
-export const post = async (path,data,token) => {
-    return request(path, data, token,'POST');
+export const post = async (path,data) => {
+    return request(path, data,'POST');
 }
-export const patch = async (path,data,token) => {
-    return request(path,data,token,'PATCH');
+export const patch = async (path,data) => {
+    return request(path,data,'PATCH');
 }
-export const del = async (path,data,token) => {
-    return request(path,data,token,'DELETE');
+export const del = async (path,data) => {
+    return request(path,data,'DELETE');
 }
 
 async function responseHandler(response) {
