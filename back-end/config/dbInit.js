@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import {ENV} from "../constants/environments";
+import {ENV} from "../constants/index.js";
 
 
 async function dbInit() {

@@ -1,1 +1,1 @@
-export {default as dbInit} from './dbInit';
+export {default as dbInit} from './dbInit.js';

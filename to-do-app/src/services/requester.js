@@ -6,7 +6,7 @@ const request = async (path, data, method) => {
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(`${ENV.baseUrl}/${path}`, options);
+    const response = await fetch(`${ENV.API_URL}/${path}`, options);
     return responseHandler(response);
 }
 
