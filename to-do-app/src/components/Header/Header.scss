@@ -1,0 +1,24 @@
+@import "../../assets/scss/colors";
+
+header{
+  background-color: #434a56;
+}
+
+.nav-link {
+  color: #61dafb;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: transform 300ms ease-out, box-shadow 300ms ease-out, border 300ms ease-out;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 1px 1px 25px 1px #545d6b;
+    border: 1px solid rgba(224, 224, 224, 0.55);
+  }
+  &:active {
+    transform: scale(0.95);
+    transition: transform 150ms ease-in-out,
+      box-shadow 150ms ease-in-out;
+  }
+}
