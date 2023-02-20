@@ -170,6 +170,10 @@ main {
   padding: 25px;
 }
 
+::placeholder {
+  color: #414141;
+}
+
 form {
   max-width: 75%;
   margin: 25px auto;
@@ -178,15 +182,21 @@ form {
   border-radius: 9px;
   box-shadow: 1px 1px 128px 1px rgba(128, 128, 128, 0.55);
 }
+form label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #0a0d17;
+}
 form input {
   width: 100%;
   padding: 10px 15px;
   margin-bottom: 10px;
   background-color: lightslategray;
-  color: white;
+  color: #61dafb;
   outline: none;
   border: none;
   border-radius: 5px;
+  font-size: 1rem;
 }
 form button {
   cursor: pointer;
