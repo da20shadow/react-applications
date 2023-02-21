@@ -3,11 +3,10 @@ import bcrypt from "bcrypt";
 import {isEmailValid} from "../utils/validators.js";
 
 const userSchema = new Schema({
-    username: {
+    name: {
         type: String,
-        unique: [true, 'Username already registered!'],
-        minLength: [3, `Username must be at least 3 characters long!`],
-        required: [true,'Username is required!']
+        minLength: [2, `Name must be at least 2 characters long!`],
+        required: [true,'Name is required!']
     },
     email: {
         type: String,

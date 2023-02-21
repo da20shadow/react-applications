@@ -8,6 +8,8 @@ const router = express.Router();
 router.post('/login', async (req, res) => {
 
     const {email, password} = req.body;
+    console.log('email',email)
+    console.log('password',password)
     try {
         const token = await authService.login(email, password);
         res.cookie('token', token, {httpOnly: true});
@@ -20,9 +22,13 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
-    const {email, password, rePassword} = req.body;
+    const {name,email, password, rePassword} = req.body;
+    console.log(name)
+    console.log(email)
+    console.log(password)
+    console.log(rePassword)
     try {
-        await authService.register(email, password, rePassword);
+        await authService.register(name,email, password, rePassword);
         return res.status(201).json({message: MESSAGES.REGISTRATION_SUCCESS});
     } catch (err) {
         return res.status(400).json({message: ERRORS.getThrowErrorMessage(err)})

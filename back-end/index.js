@@ -4,11 +4,12 @@ import {dbInit} from "./config/index.js";
 import routes from './routes.js';
 import {ENV} from "./constants/index.js";
 import {CORS} from "./middlewares/index.js";
+import bodyParser from 'body-parser'
 
 const app = express();
 
 //Adding body parser
-app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 //Add cookie parser
 app.use(cookieParser());

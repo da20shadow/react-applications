@@ -5,8 +5,6 @@ import {isEmailValid, isPasswordValid} from "../utils/validators";
 const PATH = 'auth';
 
 const login = async (email,password) => {
-    email = email.trim();
-    password = password.trim();
     if (!email || !password) {
         throw new Error(ERRORS.BAD_CREDENTIALS);
     }
@@ -16,17 +14,17 @@ const login = async (email,password) => {
     if (!isPasswordValid(password)) {
         throw new Error(ERRORS.BAD_CREDENTIALS)
     }
+    email = email.trim();
+    password = password.trim();
     return post(`${PATH}/login`,{email,password})
 }
 
-const register = (name, email, password, rePassword) => {
-
-    name = name.trim();
-    email = email.trim();
-    password = password.trim();
-    rePassword = rePassword.trim();
-
+const register = async (name, email, password, rePassword) => {
     if (!name || !email || !password || !rePassword) {
+        console.log(name)
+        console.log(email)
+        console.log(password)
+        console.log(rePassword)
         throw new Error(ERRORS.ALL_FIELDS_REQUIRED);
     }
     if (!isEmailValid(email)) {
@@ -38,6 +36,10 @@ const register = (name, email, password, rePassword) => {
     if (password !== rePassword) {
         throw new Error(ERRORS.PASS_MISMATCH);
     }
+    name = name.trim();
+    email = email.trim();
+    password = password.trim();
+    rePassword = rePassword.trim();
     return post(`${PATH}/register`, {name, email, password, rePassword});
 }
 
