@@ -6,6 +6,7 @@ const USERNAME_EXIST = "Such username already registered!"
 const EMAIL_EXIST = "Such email already registered!"
 const PASS_MISMATCH = "Password mismatch!";
 const BAD_CREDENTIALS = "Invalid email or password!";
+const UNAUTHORIZED = "Unauthorized access!";
 const getThrowErrorMessage = (err) => {
     if (err.errors){
         return Object.values(err.errors)[0].message;
@@ -24,7 +25,8 @@ const ERRORS = {
     USERNAME_EXIST,
     EMAIL_EXIST,
     getThrowErrorMessage,
-    PAGE_NOT_FOUND
+    PAGE_NOT_FOUND,
+    UNAUTHORIZED
 }
 
 export default ERRORS;
