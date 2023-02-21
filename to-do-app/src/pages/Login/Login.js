@@ -26,12 +26,14 @@ function Login() {
                 <label htmlFor="email">Email</label>
                 <input name={'email'}
                        type="email"
-                       placeholder={'johndoe@gmail.com'} />
+                       placeholder={'johndoe@gmail.com'}
+                       required />
 
                 <label htmlFor="password">Password</label>
                 <input name={'password'}
                        type="password"
-                       placeholder={'********'} />
+                       placeholder={'********'}
+                       required />
 
                 <button type={'submit'} >Login</button>
 
