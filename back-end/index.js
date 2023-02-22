@@ -20,6 +20,10 @@ app.use(cookieParser());
 //Check if there is a token
 app.use(authToken);
 
+app.get('/check',(req,res) => {
+    res.status(200).json('NodeJS Back End Works Fine!')
+})
+
 //Add routes
 app.use(routes);
 

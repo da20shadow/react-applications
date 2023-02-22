@@ -1,25 +1,35 @@
 import express from "express";
-import {MESSAGES} from "../constants/index.js";
+import {ERRORS, MESSAGES} from "../constants/index.js";
 import {isAuthenticated} from "../middlewares/index.js";
+import {taskService} from "../services/index.js";
 const router = express.Router();
 
 router.post('/add', isAuthenticated,async (req, res) => {
     const task = req.body;
-    return res.status(201).json({
-        message: MESSAGES.ADD_TASK_SUCCESS,
-        task,
-    });
+    try {
+        task.owner = req.user._id;
+        const addedTask = await taskService.add(task)
+        return res.status(201).json({
+            message: MESSAGES.ADD_TASK_SUCCESS,
+            task: addedTask,
+        });
+    }catch (err){
+        return res.status(400).json({
+            message: ERRORS.ADD_TASK_FAILURE,
+            error: err
+        });
+    }
 });
 
 router.get('', isAuthenticated,async (req, res) => {
-    const tasks = [
-        {_id: 'dfgkldf1kjgjdfgh',title: 'Task Title..',status: 'To Do'},
-        {_id: 'dfgkld2fkjgjdfgh',title: 'Task Title 2..',status: 'To Do'},
-        {_id: 'dfgkldfk3jgjdfgh',title: 'Task Title 3..',status: 'To Do'},
-    ]
-    return res.status(200).json({
-        tasks,
-    });
+    try {
+        const tasks = await taskService.getAll(req.user._id);
+        return res.status(200).json({tasks});
+    }catch (err) {
+        return res.status(400).json({
+            message: err.message,
+        });
+    }
 });
 
 

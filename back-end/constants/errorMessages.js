@@ -15,6 +15,8 @@ const getThrowErrorMessage = (err) => {
 }
 const PAGE_NOT_FOUND = "Page Not Found!";
 const USER_NOT_EXIST = "User not found!";
+const ADD_TASK_FAILURE = "Unable to added task!";
+
 
 const ERRORS = {
     INVALID_EMAIL,
@@ -28,7 +30,8 @@ const ERRORS = {
     getThrowErrorMessage,
     PAGE_NOT_FOUND,
     USER_NOT_EXIST,
-    UNAUTHORIZED
+    UNAUTHORIZED,
+    ADD_TASK_FAILURE,
 }
 
 export default ERRORS;

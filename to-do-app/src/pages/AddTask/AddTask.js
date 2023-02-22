@@ -1,7 +1,18 @@
 import {Main} from "../../components";
 import {taskService} from "../../services/taskService";
+import {useEffect} from "react";
+import {useStateContext} from "../../context/ContextProvider";
 
 function AddTask(){
+
+    const {logoutUser} = useStateContext();
+
+    useEffect(() => {
+        const isUser = localStorage.getItem('user');
+        if (!isUser) {
+            logoutUser()
+        }
+    },[])
 
     const addTaskHandler = (e) => {
         e.preventDefault();
@@ -13,6 +24,7 @@ function AddTask(){
                 console.log('Added Task: ', result.task)
             }).catch(err => {
                 alert(err.message)
+                if (err.code === 401) { logoutUser() }
             });
         }catch (err){
             alert(err.message)

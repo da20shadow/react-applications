@@ -3,8 +3,12 @@ function Home() {
     return (
         <>
 
-            <section className="hero">
+            <section className="hero box">
                 <h1>Hero section</h1>
+                <h3>Something more?</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda at cum delectus
+                    dignissimos fugit harum, magni nulla, perferendis quas quasi quis reprehenderit similique tempora
+                    temporibus vero voluptatem? Eum.</p>
             </section>
 
             <main>

@@ -2,7 +2,6 @@ import {jwt} from "../lib/promisifyJWT.js";
 import {ERRORS, SECRET_KEY} from "../constants/index.js";
 
 export const authMiddleware = async (req, res, next) => {
-    console.log('Check if there is token')
     const token = req.cookies['token'];
     if (token) {
         try {
