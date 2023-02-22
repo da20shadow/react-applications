@@ -14,6 +14,7 @@ const getThrowErrorMessage = (err) => {
     return err.message;
 }
 const PAGE_NOT_FOUND = "Page Not Found!";
+const USER_NOT_EXIST = "User not found!";
 
 const ERRORS = {
     INVALID_EMAIL,
@@ -26,6 +27,7 @@ const ERRORS = {
     EMAIL_EXIST,
     getThrowErrorMessage,
     PAGE_NOT_FOUND,
+    USER_NOT_EXIST,
     UNAUTHORIZED
 }
 
