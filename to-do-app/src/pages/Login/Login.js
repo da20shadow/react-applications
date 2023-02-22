@@ -1,19 +1,20 @@
 import {Link} from "react-router-dom";
 import {Main} from "../../components";
 import {authService} from "../../services/authService";
+import {useStateContext} from "../../context/ContextProvider";
 
 function Login() {
+
+    const {loginUser} = useStateContext();
 
     const loginHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const {email, password} = Object.fromEntries(formData);
 
-        authService.login(email, password).then(user => {
-            console.log(user);
-
+        authService.login(email, password).then(result => {
+            loginUser(result.user);
         }).catch(err => {
-            console.log(err.message);
             alert(err.message)
         });
     }
