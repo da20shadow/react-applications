@@ -1,7 +1,7 @@
 import {ENV} from "../constants";
 
 const request = async (path, data, method) => {
-    const options = {method, headers: {"Content-type": "Application/JSON"}};
+    const options = {method, headers: {"Content-type": "Application/JSON"},credentials: 'include'};
     if (data) {
         options.body = JSON.stringify(data);
     }
