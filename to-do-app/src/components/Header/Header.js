@@ -22,6 +22,8 @@ function Header () {
     const loggedUserNav = (
         <>
             <NavLink to={'/dashboard'} className={'nav-link'} >Dashboard</NavLink>
+            <NavLink to={'/tasks'} className={'nav-link'} >Tasks</NavLink>
+            <NavLink to={'/add-task'} className={'nav-link'} >Add Task</NavLink>
             <NavLink onClick={logout} to="#" className={'nav-link'}>Logout</NavLink>
         </>
     );

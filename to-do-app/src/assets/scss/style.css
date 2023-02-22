@@ -187,7 +187,7 @@ form label {
   font-size: 1rem;
   color: #0a0d17;
 }
-form input {
+form input, form textarea, form select {
   width: 100%;
   padding: 10px 15px;
   margin-bottom: 10px;
@@ -218,8 +218,44 @@ form button:active {
   transform: scale(0.95);
 }
 
+ul {
+  list-style-type: none;
+}
+
 .text-center {
   text-align: center;
+}
+
+.box {
+  margin: 25px auto;
+  padding: 25px;
+  background-color: #434a56;
+  border-radius: 9px;
+  box-shadow: 1px 1px 128px 1px rgba(128, 128, 128, 0.55);
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-95 {
+  width: 95%;
+}
+
+.w-50vw {
+  width: 50vw;
+}
+
+.w-75vw {
+  width: 75vw;
+}
+
+.w-95vw {
+  width: 95vw;
 }
 
 /*# sourceMappingURL=style.css.map */
