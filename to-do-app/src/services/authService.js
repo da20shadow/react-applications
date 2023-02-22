@@ -21,10 +21,6 @@ const login = async (email,password) => {
 
 const register = async (name, email, password, rePassword) => {
     if (!name || !email || !password || !rePassword) {
-        console.log(name)
-        console.log(email)
-        console.log(password)
-        console.log(rePassword)
         throw new Error(ERRORS.ALL_FIELDS_REQUIRED);
     }
     if (!isEmailValid(email)) {
@@ -47,8 +43,13 @@ const logout = () => {
     return post(`${PATH}/logout`,'');
 }
 
+const checkIfIsLogged = () => {
+    return post(`${PATH}/is-logged`);
+}
+
 export const authService = {
     login,
     register,
-    logout
+    logout,
+    checkIfIsLogged
 }
