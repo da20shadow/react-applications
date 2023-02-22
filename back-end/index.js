@@ -11,18 +11,17 @@ const app = express();
 //Adding body parser
 app.use(bodyParser.json());
 
-//Add cookie parser
-app.use(cookieParser());
-
 //Set CORS
 app.use(CORS);
 
+//Add cookie parser
+app.use(cookieParser());
+
 //Check if there is a token
-app.use(authToken);
+// app.use(authToken);
 
 //Add routes
 app.use(routes);
-
 
 //Connect with db and run the server!
 dbInit().then(() => {
