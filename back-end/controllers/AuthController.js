@@ -6,27 +6,20 @@ import {ERRORS} from "../constants/index.js";
 const router = express.Router();
 
 router.post('/login', async (req, res) => {
-
     const {email, password} = req.body;
-    console.log('email',email)
-    console.log('password',password)
+
     try {
-        const token = await authService.login(email, password);
+        const {token,user} = await authService.login(email, password);
         res.cookie('token', token, {httpOnly: true});
         return res.status(200)
-            .json({message: MESSAGES.LOGIN_SUCCESS})
+            .json({user,message: MESSAGES.LOGIN_SUCCESS})
     } catch (err) {
         return res.status(400).json({message: err.message});
     }
-
 });
 
 router.post('/register', async (req, res) => {
     const {name,email, password, rePassword} = req.body;
-    console.log(name)
-    console.log(email)
-    console.log(password)
-    console.log(rePassword)
     try {
         await authService.register(name,email, password, rePassword);
         return res.status(201).json({message: MESSAGES.REGISTRATION_SUCCESS});
@@ -34,5 +27,24 @@ router.post('/register', async (req, res) => {
         return res.status(400).json({message: ERRORS.getThrowErrorMessage(err)})
     }
 });
+
+router.post('/logout', async (req, res) => {
+    try {
+        req.user = null;
+        req.isAuthenticated = false;
+        res.clearCookie('token');
+        return res.status(200)
+            .json({message: MESSAGES.LOGOUT_SUCCESS})
+    } catch (err) {
+        return res.status(400).json({message: err.message});
+    }
+});
+
+router.post('/is-logged', async (req,res) => {
+    if (req.user) {
+        return res.status(200).json({user: req.user});
+    }
+    return res.status(401).json({message: ERRORS.UNAUTHORIZED});
+})
 
 export default router;
