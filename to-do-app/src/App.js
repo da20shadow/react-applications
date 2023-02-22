@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './assets/scss/style.css';
 import {Header} from "./components";
 import {Navigate,Routes, Route} from "react-router-dom";
@@ -13,7 +12,8 @@ function App() {
         console.log('Check if is Logged!')
         console.log('user', user)
         console.log('isLogged', isLogged)
-        if (!isLogged) {
+        let localStoreUser = localStorage.getItem('user');
+        if (!isLogged || !localStoreUser) {
             console.log('There is no info in the Context!')
             console.log('Checking with request to the server...!')
             authService.checkIfIsLogged().then(r => {
@@ -25,7 +25,7 @@ function App() {
                 console.log('Error: ', err)
             });
         }
-    },[])
+    },)
   return (
     <>
       <Header/>

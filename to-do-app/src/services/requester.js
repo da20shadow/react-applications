@@ -10,7 +10,7 @@ const request = async (path, data, method) => {
     return responseHandler(response);
 }
 
-export const get = async (path,) => {
+export const get = async (path) => {
     return request(path, '', 'GET');
 }
 export const post = async (path,data) => {
@@ -25,9 +25,16 @@ export const del = async (path,data) => {
 
 async function responseHandler(response) {
     const result = await response.json();
+
     if (response.ok) {
         return result;
     } else {
+        if (response.status === 401) {
+            // await authService.logout();
+            console.log('from requester Response Status: ', response.status)
+            console.log('Clearing the localStorage!')
+            localStorage.clear();
+        }
         throw result;
     }
 }

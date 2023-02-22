@@ -1,4 +1,5 @@
 import {Main} from "../../components";
+import {taskService} from "../../services/taskService";
 
 function AddTask(){
 
@@ -6,7 +7,16 @@ function AddTask(){
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const {title, status, description, dueDate} = Object.fromEntries(formData);
-
+        try {
+            taskService.addTask({title, status, description, dueDate}).then(result => {
+                console.log('Message: ', result.message)
+                console.log('Added Task: ', result.task)
+            }).catch(err => {
+                alert(err.message)
+            });
+        }catch (err){
+            alert(err.message)
+        }
     }
 
     return (

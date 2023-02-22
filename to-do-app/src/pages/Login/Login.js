@@ -14,6 +14,7 @@ function Login() {
 
         authService.login(email, password).then(result => {
             loginUser(result.user);
+            console.log('user',result.user)
         }).catch(err => {
             alert(err.message)
         });

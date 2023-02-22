@@ -6,6 +6,7 @@ const StateContext = createContext();
 const initialUserState = {
     _id: '',
     name: '',
+    exp: '',
 }
 
 export const ContextProvider = ({children}) => {
