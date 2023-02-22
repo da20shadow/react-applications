@@ -15,15 +15,17 @@ const login = async (email, password) => {
     if (!user) {
         throw new Error(ERRORS.BAD_CREDENTIALS);
     }
-    const isPasswordValid = verifyPassword(password, user.password);
+    const isPasswordValid = await verifyPassword(password, user.password);
     if (!isPasswordValid) {
         throw new Error(ERRORS.BAD_CREDENTIALS);
     }
     const payload = {
         _id: user._id,
+        name: user.name,
         email: user.email,
     }
-    return await jwt.sign(payload,SECRET_KEY,{expiresIn: '1h'})
+    const token = await jwt.sign(payload, SECRET_KEY, {expiresIn: '30'});
+    return {token, user: {_id: user._id,name: user.name}}
 }
 
 const register = async (name,email, password, rePassword) => {
