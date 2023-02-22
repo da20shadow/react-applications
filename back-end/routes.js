@@ -1,14 +1,12 @@
 import express from "express";
-import {authController, userController} from "./controllers/index.js";
+import {authController, userController,taskController} from "./controllers/index.js";
 import {ERRORS} from "./constants/index.js";
-import {authToken} from "./middlewares/index.js";
 
 const routes = express.Router();
 
 routes.use('/api/auth', authController);
 
-//Check if there is a token
-express().use(authToken);
+routes.use('/api/tasks',taskController)
 
 routes.use('/api/users', userController);
 

@@ -44,7 +44,7 @@ router.post('/is-logged', async (req,res) => {
     if (req.user) {
         return res.status(200).json({user: req.user});
     }
-    return res.status(401).json({message: ERRORS.UNAUTHORIZED});
+    return res.status(401).json({message: ERRORS.UNAUTHORIZED,code: 401});
 })
 
 export default router;

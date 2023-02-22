@@ -18,7 +18,7 @@ app.use(CORS);
 app.use(cookieParser());
 
 //Check if there is a token
-// app.use(authToken);
+app.use(authToken);
 
 //Add routes
 app.use(routes);

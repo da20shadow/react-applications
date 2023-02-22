@@ -24,7 +24,7 @@ const login = async (email, password) => {
         name: user.name,
         email: user.email,
     }
-    const token = await jwt.sign(payload, SECRET_KEY, {expiresIn: '30'});
+    const token = await jwt.sign(payload, SECRET_KEY, {expiresIn: '1m'});
     return {token, user: {_id: user._id,name: user.name}}
 }
 
